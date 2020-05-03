@@ -49,7 +49,7 @@ import io
 import logging
 import argparse
 
-# small help for script; patch to custom configuration file can be passed
+# small help for script; path to custom configuration file can be passed
 helper = argparse.ArgumentParser(description='''McAfee Web Gateway Cloud Service (WGCS) Log Puller Script.''')
 helper.add_argument('--config', help='path to custom configuration file (default: <scriptname>.conf)', nargs='?', default=os.path.splitext(__file__)[0] + '.conf')
 args = helper.parse_args()
