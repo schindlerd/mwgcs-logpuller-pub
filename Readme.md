@@ -18,7 +18,9 @@ General API reference:
 
 ## Usage
 
-Download script and configuration file. Make script executable and adjust the configuration file to your needs.
+- Download script and configuration file.
+- Make script executable and adjust the configuration file to your needs.
+- Run it periodically via cron for example.
 
 ## Configuration
 
@@ -38,3 +40,7 @@ This table explains the necessary configuration options:
 |  | ```syslogPort``` | INT (mandatory) | Port for remote syslog input | ```5555``` |
 |  | ```syslogProto``` | STR (mandatory) | Must be either ```'TCP'``` or ```'UDP'``` | ```UDP``` |
 |  | ```syslogKeepCSV``` | BOOL (mandatory) | Keep the downloaded CSV (```'True'```) or delete after forwarding (```'False'```) | ```False``` |
+
+## Disclaimer
+
+This is an **UNOFFICIAL** project and is **NOT** sponsored or supported by **McAfee, Inc**.
