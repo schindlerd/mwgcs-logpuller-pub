@@ -34,6 +34,7 @@ This table explains the necessary configuration options:
 | ```request``` | ```requestTimestampFrom``` | INT (mandatory) | Epoch timestamp of last successful request; dynamically set to last execution time; if initially set to 0 value is dynamically adjusted to ```Now - 24h``` | ```1588458908``` |
 |  | ```chunkIncrement``` | INT (mandatory) | Requests are splitted into chunks if time between last request and execution is bigger than this value (seconds) | ```3600``` |
 |  | ```connectionTimeout``` | INT (mandatory) | Time to wait for request response (seconds) | ```180``` |
+|  | ```outputDirCSV``` | STR (optional) | Specify different output directory for downloaded CSV file ```'OutputLog.$NowUnixEpoch$.csv'``` **IMPORTANT**: directoy must exist! | ```/var/tmp/wgcslogs``` |
 | ```proxy``` | ```proxyURL``` | STR (optional) | If you are behind a proxy you can configure a corresponding URL here (format: ```http://PROXY_SERVER:PORT``` or ```http://USER:PASSWORD@PROXY_SERVER:PORT)``` | ```http://proxy.example.com:8080``` |
 | ```syslog``` | ```syslogEnable``` | BOOL (mandatory) | Enable message forwarding in form of a JSON stream; either 'True' or 'False' | ```True``` |
 |  | ```syslogHost``` | STR (mandatory) | IP or hostname of remote syslog host/Log Management/SIEM | ```graylog.example.com``` |

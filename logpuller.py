@@ -14,6 +14,7 @@
 #
 # 
 # CHANGELOG:
+# 1.1  2020-05-03 - Config option to set the output dir for downloaded CSV files
 # 1.0  2020-05-02 - initial release (Happy Birthday Adam!)
 #
 ################################################################################
@@ -72,8 +73,6 @@ logging.info('config='+config)
 
 # Path for request; effectively the search string for log messages
 saasPath = '/mwg/api/reporting/forensic/$saasCustomerID$?filter.requestTimestampFrom=$requestTimestampFrom$&amp;filter.requestTimestampTo=$requestTimestampTo$&amp;order.0.requestTimestamp=asc'
-## output file for downloaded CSV log entries
-saasFilename = os.path.join(sys.path[0], 'OutputLog.$Now$.csv')
 # first line of response should be this when API version 5 used:
 fieldHeader = '"user_id","username","source_ip","http_action","server_to_client_bytes","client_to_server_bytes","requested_host","requested_path","result","virus","request_timestamp_epoch","request_timestamp","uri_scheme","category","media_type","application_type","reputation","last_rule","http_status_code","client_ip","location","block_reason","user_agent_product","user_agent_version","user_agent_comment","process_name","destination_ip","destination_port"'
 # request header for CSV download and API version
@@ -87,7 +86,7 @@ Now = int(time.time())
 requestTimestampTo = Now
 
 def readConfig(config):
-    global saasCustomerID, saasUserID, saasPassword, saasHost, requestTimestampFrom, chunkIncrement, connectionTimeout, proxyURL, syslogEnable, syslogHost, syslogPort, syslogProto, syslogKeepCSV
+    global saasCustomerID, saasUserID, saasPassword, saasHost, requestTimestampFrom, chunkIncrement, connectionTimeout, outputDirCSV, proxyURL, syslogEnable, syslogHost, syslogPort, syslogProto, syslogKeepCSV
     try:
         with open(config, 'r') as f:
             cfgfile = f.read()
@@ -116,6 +115,9 @@ def readConfig(config):
 
             connectionTimeout = parser.getint('request', 'connectionTimeout')
             logging.info('connectionTimeout='+str(connectionTimeout))
+
+            outputDirCSV = parser.get('request', 'outputDirCSV')
+            logging.info('outputDirCSV='+outputDirCSV)
 
             proxyURL = parser.get('proxy', 'proxyURL')
             # do not log proxyURL - might contain user/password
@@ -256,6 +258,12 @@ for requestChunk in range(requestTimestampFrom,Now,chunkIncrement):
         totalLines += responseLines.__len__() - 2
         requestLogLine += ', response: ' + str(r.status_code) + ', responseLines: ' + str(responseLines.__len__()) + ', totalLines: ' + str(totalLines)
         logging.info(requestLogLine)
+
+        # Set output dir for downloaded CSV if set in config; else use script path
+        if not outputDirCSV:
+            saasFilename = os.path.join(sys.path[0], 'OutputLog.$Now$.csv')
+        else:
+            saasFilename = os.path.join(outputDirCSV, 'OutputLog.$Now$.csv')
 
         # if file does not exist, write the log headers
         saasFilename = saasFilename.replace('$Now$',str(Now))
