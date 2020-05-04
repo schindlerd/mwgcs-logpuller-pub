@@ -48,7 +48,7 @@ This is an **UNOFFICIAL** project and is **NOT** sponsored or supported by **McA
 
 ## Credits and Links
 
-Special thanks go to @tux78, Jeff Ebeling and Erik Elsasser from McAfee for providing the codebase for my reworked implementation.
+Special thanks go to [@tux78](https://github.com/tux78), Jeff Ebeling and Erik Elsasser from McAfee for providing the codebase for my reworked implementation.
 
 - Please refer to this McAfee Community Article for further inspiration - <https://community.mcafee.com/t5/Web-Gateway/Example-Bash-Script-for-Log-Pull-from-Web-Gateway-Cloud-Service/m-p/619639#M19479>
 - A PowerShell implementation can be found here - <https://github.com/tux78/WGCSLogPull>
