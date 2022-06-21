@@ -11,10 +11,10 @@ Timestamp is automatically adjusted with the last successful time of request. Th
 The script is using McAfee SaaS Message API ver. 5
 
 Field reference:
-<https://docs.mcafee.com/bundle/web-gateway-cloud-service-product-guide/page/GUID-BDF3E4F1-1625-4569-BE80-D528CE521BC1.html>
+<https://success.myshn.net/Skyhigh_Secure_Web_Gateway_(Cloud)/Reporting/Using_a_REST_API_for_Reporting/Reporting_Fields>
 
 General API reference:
-<https://docs.mcafee.com/bundle/web-gateway-cloud-service-product-guide/page/GUID-B24F5DAE-F9BB-44F7-976A-BF2245CBADF3.html>
+<https://success.myshn.net/Skyhigh_Secure_Web_Gateway_(Cloud)/Reporting/Using_a_REST_API_for_Reporting/About_Working_with_the_REST_API>
 
 ## Usage
 
